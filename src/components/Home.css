@@ -1,6 +1,8 @@
 .home-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+  position: relative; /* ✅ This ensures the absolute icon positions correctly */
+  
 }
 
 .home-content {
@@ -37,79 +39,208 @@
   line-height: 1.6;
 }
 
-.profile-dashboard {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 32px;
-  margin-bottom: 40px;
+/* Small profile icon fallback */
+.profile-letter {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.profile-card {
-  background: white;
-  border-radius: 24px;
-  padding: 32px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-align: center;
-  animation: fadeInUp 0.8s ease 0.2s both;
-}
-
-.profile-image-container {
-  position: relative;
-  margin-bottom: 24px;
-}
-
-.profile-image {
+/* Big profile letter for modal */
+.profile-letter-big {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.profile-image:hover {
-  transform: scale(1.05);
-}
-
-.status-badge {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: linear-gradient(135deg, #00b894, #00cec9);
+  background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+  font-weight: 800;
+  font-size: 3rem;
+  margin: 0 auto 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.profile-name {
+/* Container for top-left profile icon */
+.profile-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Image inside icon */
+.profile-icon img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+
+.profile-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+.profile-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+.profile-modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 24px;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+}
+.close-btn {
+  position: absolute; top: 10px; right: 20px;
+  background: none; border: none;
+  font-size: 2rem; cursor: pointer; color: #333;
+}
+.edit-profile-btn {
+  margin-top: 16px;
+  background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  margin: 60px 0;
+  text-align: center;
+  animation: fadeInUp 0.8s ease both;
+}
+
+.testimonials-section h3 {
   font-size: 1.8rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 0 16px;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-card img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.testimonial-card h4 {
+  font-size: 1.2rem;
   font-weight: 700;
   color: #2c3e50;
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 
-.profile-species {
-  font-size: 1.1rem;
-  color: #666;
-  margin-bottom: 8px;
+.testimonial-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
 }
 
-.profile-style {
-  font-style: italic;
-  color: #888;
+/* Promotions Section */
+.promotions-section {
+  margin: 60px 0;
+  text-align: center;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.promotions-section h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
   margin-bottom: 24px;
+  color: #2c3e50;
 }
 
-.profile-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+.promotion-banner {
+  background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+  padding: 18px 24px;
+  margin: 12px auto;
+  border-radius: 16px;
+  font-weight: 600;
+  color: white;
+  max-width: 600px;
+  font-size: 1.05rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.promotion-banner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional subtle animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 .stat-item {
   background: linear-gradient(135deg, #f8f9fa, #e9ecef);
