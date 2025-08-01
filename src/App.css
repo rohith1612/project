@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
   background: linear-gradient(135deg, #ff9a8b 0%, #fecfef 50%, #fecfef 100%);
@@ -77,7 +77,11 @@ body {
 
 /* Animation classes */
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -167,4 +171,507 @@ body {
 .card-hover:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Add these styles to your existing App.css */
+
+/* Weather Loading Screen Additional Styles */
+.weather-loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #74b9ff, #0984e3, #a29bfe, #6c5ce7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: weatherGradientShift 8s ease-in-out infinite;
+}
+
+@keyframes weatherGradientShift {
+  0%,
+  100% {
+    background: linear-gradient(135deg, #74b9ff, #0984e3, #a29bfe, #6c5ce7);
+  }
+  25% {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7, #fd79a8, #e17055);
+  }
+  50% {
+    background: linear-gradient(135deg, #fd79a8, #e17055, #ffeaa7, #fdcb6e);
+  }
+  75% {
+    background: linear-gradient(135deg, #00b894, #00cec9, #74b9ff, #0984e3);
+  }
+}
+
+.weather-loading-content {
+  text-align: center;
+  color: white;
+  max-width: 400px;
+  padding: 40px;
+  position: relative;
+}
+
+.weather-loading-content::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.weather-loading-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.loading-weather-icon {
+  font-size: 5rem;
+  margin-bottom: 30px;
+  animation: weatherIconFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes weatherIconFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+}
+
+.weather-loading-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  to {
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.5),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.weather-loading-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.loading-dots span {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  animation: loadingBounce 1.4s ease-in-out infinite both;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+  background: #ffeaa7;
+}
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+  background: #fd79a8;
+}
+.loading-dots span:nth-child(3) {
+  animation-delay: 0s;
+  background: #74b9ff;
+}
+
+@keyframes loadingBounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0) translateY(0);
+  }
+  40% {
+    transform: scale(1) translateY(-10px);
+  }
+}
+
+/* Enhanced App Styles */
+.App {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Weather Transition Effects */
+.weather-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.weather-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.weather-particle {
+  position: absolute;
+  pointer-events: none;
+  animation: particleFloat 8s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 20px)) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Weather Status Indicator for Navigation */
+.weather-status-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  animation: slideInRight 0.5s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.weather-status-indicator.perfect {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 184, 148, 0.9),
+    rgba(0, 206, 201, 0.9)
+  );
+  color: white;
+  animation: perfectWeatherGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes perfectWeatherGlow {
+  from {
+    box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+  }
+  to {
+    box-shadow: 0 5px 25px rgba(0, 184, 148, 0.6),
+      0 0 30px rgba(0, 184, 148, 0.3);
+  }
+}
+
+.weather-status-indicator.imperfect {
+  background: linear-gradient(
+    135deg,
+    rgba(253, 121, 168, 0.9),
+    rgba(225, 112, 85, 0.9)
+  );
+  color: white;
+  animation: warningPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes warningPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Enhanced Route Transition Effects */
+.route-transition-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.route-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.route-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.route-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Magical Loading Overlay */
+.magical-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(162, 155, 254, 0.1),
+    rgba(108, 92, 231, 0.2)
+  );
+  backdrop-filter: blur(5px);
+  z-index: 9998;
+  pointer-events: none;
+}
+
+.magical-loading-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 234, 167, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(253, 121, 168, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(116, 185, 255, 0.2) 0%,
+      transparent 70%
+    );
+  animation: magicalShimmer 4s ease-in-out infinite;
+}
+
+@keyframes magicalShimmer {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* Error Boundary Styles */
+.error-boundary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.error-boundary h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.error-boundary p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.error-boundary button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.error-boundary button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 768px) {
+  .weather-status-indicator {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 0.7rem;
+  }
+
+  .weather-loading-content {
+    padding: 30px 20px;
+  }
+
+  .weather-loading-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .loading-weather-icon {
+    font-size: 4rem;
+  }
+
+  .error-boundary h1 {
+    font-size: 2rem;
+  }
+
+  .error-boundary p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-loading-content {
+    padding: 20px 15px;
+  }
+
+  .weather-loading-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .loading-weather-icon {
+    font-size: 3rem;
+  }
+
+  .loading-dots span {
+    width: 10px;
+    height: 10px;
+  }
+
+  .error-boundary {
+    padding: 30px 20px;
+  }
+
+  .error-boundary h1 {
+    font-size: 1.8rem;
+  }
+
+  .error-boundary button {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .loading-weather-icon,
+  .weather-particles,
+  .magical-loading-overlay::before,
+  .weather-status-indicator.perfect,
+  .weather-status-indicator.imperfect {
+    animation: none;
+  }
+
+  .route-transition-enter-active,
+  .route-transition-exit-active {
+    transition: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .weather-loading-screen {
+    background: #000;
+    color: #fff;
+  }
+
+  .weather-status-indicator {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+  }
+
+  .error-boundary {
+    background: #000;
+    color: #fff;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .weather-loading-screen,
+  .weather-status-indicator,
+  .magical-loading-overlay,
+  .weather-particles {
+    display: none;
+  }
 }

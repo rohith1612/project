@@ -1,19 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-import Home from './components/Home';
-import Upload from './components/Upload';
-import PickupCorner from './components/PickupCorner';
-import Match from './components/Match';
-import usersData from './data/users.json';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Home from "./components/Home";
+import Upload from "./components/Upload";
+import PickupCorner from "./components/PickupCorner";
+import Match from "./components/Match";
+import WeatherErrorPopup from "./components/WeatherErrorPopup";
+import usersData from "./data/users.json";
+import "./App.css";
 
 export interface User {
   id: string;
   username: string;
   password: string;
-  type: 'fox' | 'chicken';
+  type: "fox" | "chicken";
   name: string;
   species: string;
   age: number;
@@ -48,6 +55,76 @@ interface UploadedImage {
   timestamp: string;
 }
 
+interface WeatherData {
+  rainy: boolean;
+  sunny: boolean;
+}
+
+// Weather Guard Component
+const WeatherGuard: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [showWeatherError, setShowWeatherError] = useState(false);
+  const [weatherChecked, setWeatherChecked] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    loadWeatherData();
+  }, []);
+
+  const loadWeatherData = async () => {
+    try {
+      const response = await fetch("/data/weather.json");
+      const weatherData: WeatherData = await response.json();
+      setWeather(weatherData);
+      setWeatherChecked(true);
+
+      // Check if weather conditions are not met
+      if (!weatherData.rainy || !weatherData.sunny) {
+        setShowWeatherError(true);
+      }
+    } catch (error) {
+      console.error("Failed to load weather data:", error);
+      setWeatherChecked(true);
+      setShowWeatherError(true);
+    }
+  };
+
+  const handleWeatherErrorClose = () => {
+    setShowWeatherError(false);
+    navigate("/home"); // Redirect back to home when weather conditions aren't met
+  };
+
+  // If weather hasn't been checked yet, show loading
+  if (!weatherChecked) {
+    return (
+      <div className="weather-loading-screen">
+        <div className="weather-loading-content">
+          <div className="loading-weather-icon">🌤️</div>
+          <h2>Checking Weather Conditions...</h2>
+          <p>Ensuring perfect conditions for love to bloom!</p>
+          <div className="loading-dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // If weather conditions are not met, show error popup
+  if (showWeatherError) {
+    return (
+      <WeatherErrorPopup weather={weather} onClose={handleWeatherErrorClose} />
+    );
+  }
+
+  // If weather conditions are perfect, render the protected component
+  return <>{children}</>;
+};
+
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>(usersData.users);
@@ -59,7 +136,9 @@ function App() {
   }, []);
 
   const login = (username: string, password: string): boolean => {
-    const user = users.find(u => u.username === username && u.password === password);
+    const user = users.find(
+      (u) => u.username === username && u.password === password
+    );
     if (user) {
       setCurrentUser(user);
       return true;
@@ -67,8 +146,10 @@ function App() {
     return false;
   };
 
-  const register = (userData: Omit<User, 'id' | 'lastLogin' | 'postImages'>): boolean => {
-    const existingUser = users.find(u => u.username === userData.username);
+  const register = (
+    userData: Omit<User, "id" | "lastLogin" | "postImages">
+  ): boolean => {
+    const existingUser = users.find((u) => u.username === userData.username);
     if (existingUser) {
       return false;
     }
@@ -77,7 +158,7 @@ function App() {
       ...userData,
       id: `${userData.type}_${Date.now()}`,
       lastLogin: new Date().toISOString(),
-      postImages: []
+      postImages: [],
     };
 
     setUsers([...users, newUser]);
@@ -88,11 +169,11 @@ function App() {
     setCurrentUser(null);
   };
 
-  const uploadImage = (imageData: Omit<UploadedImage, 'id' | 'timestamp'>) => {
+  const uploadImage = (imageData: Omit<UploadedImage, "id" | "timestamp">) => {
     const newImage: UploadedImage = {
       ...imageData,
       id: `img_${Date.now()}`,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
     setUploadedImages([...uploadedImages, newImage]);
   };
@@ -101,58 +182,74 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
-              currentUser ? 
-              <Navigate to="/home" replace /> : 
-              <Login onLogin={login} />
-            } 
+              currentUser ? (
+                <Navigate to="/home" replace />
+              ) : (
+                <Login onLogin={login} />
+              )
+            }
           />
-          <Route 
-            path="/register" 
+          <Route
+            path="/register"
             element={
-              currentUser ? 
-              <Navigate to="/home" replace /> : 
-              <Register onRegister={register} />
-            } 
+              currentUser ? (
+                <Navigate to="/home" replace />
+              ) : (
+                <Register onRegister={register} />
+              )
+            }
           />
-          <Route 
-            path="/home" 
+          <Route
+            path="/home"
             element={
-              currentUser ? 
-              <Home user={currentUser} onLogout={logout} /> : 
-              <Navigate to="/" replace />
-            } 
+              currentUser ? (
+                <Home user={currentUser} onLogout={logout} />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
           />
-          <Route 
-            path="/upload" 
+          <Route
+            path="/upload"
             element={
-              currentUser ? 
-              <Upload 
-                user={currentUser} 
-                onLogout={logout} 
-                onUpload={uploadImage} 
-                uploadedImages={uploadedImages.filter(img => img.userId === currentUser.id)} 
-              /> : 
-              <Navigate to="/" replace />
-            } 
+              currentUser ? (
+                <Upload
+                  user={currentUser}
+                  onLogout={logout}
+                  onUpload={uploadImage}
+                  uploadedImages={uploadedImages.filter(
+                    (img) => img.userId === currentUser.id
+                  )}
+                />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
           />
-          <Route 
-            path="/pickup-corner" 
+          <Route
+            path="/pickup-corner"
             element={
-              currentUser ? 
-              <PickupCorner user={currentUser} onLogout={logout} /> : 
-              <Navigate to="/" replace />
-            } 
+              currentUser ? (
+                <PickupCorner user={currentUser} onLogout={logout} />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
           />
-          <Route 
-            path="/match" 
+          <Route
+            path="/match"
             element={
-              currentUser ? 
-              <Match user={currentUser} users={users} onLogout={logout} /> : 
-              <Navigate to="/" replace />
-            } 
+              currentUser ? (
+                <WeatherGuard>
+                  <Match user={currentUser} users={users} onLogout={logout} />
+                </WeatherGuard>
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
           />
         </Routes>
       </div>
