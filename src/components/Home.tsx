@@ -113,20 +113,30 @@ const Home: React.FC<HomeProps> = ({ user, onLogout }) => {
           </div>
         </div>
 
-        <div className="quick-actions">
-          <h3>⚡ Quick Actions</h3>
-          <div className="action-buttons">
-            <a href="/upload" className="action-btn upload-btn">
-              📸 Share a Photo
-            </a>
-            <a href="/match" className="action-btn match-btn">
-              💘 Find Matches
-            </a>
-            <a href="/pickup-corner" className="action-btn pickup-btn">
-              💌 Get Pickup Lines
-            </a>
+        <div className="pair-recommendations">
+          <h3>💞 Pair Recommendations for You</h3>
+          <p className="recommendation-subtitle">
+            Based on your {user.type === 'fox' ? 'fox' : 'hen'} vibes and seasonal charm, here are your top picks:
+          </p>
+
+          <div className="recommendations-grid">
+            {[
+              { name: "Rosie Hen", image: "/images/hen1.jpg", note: "Sunny season partner 🌞" },
+              { name: "Clucky Belle", image: "/images/hen2.jpg", note: "Rainy season cuddle 🐥" },
+              { name: "Scarlet Hen", image: "/images/hen3.jpg", note: "Loves evening walks 🌇" },
+              { name: "Amber Hen", image: "/images/hen4.jpg", note: "Perfect festival companion 🎉" },
+              { name: "Luna Hen", image: "/images/hen5.jpg", note: "Adventurous and charming ✨" },
+            ].map((rec, index) => (
+              <div key={index} className="recommendation-card">
+                <img src={rec.image} alt={rec.name} className="recommendation-image" />
+                <h4 className="recommendation-name">{rec.name}</h4>
+                <p className="recommendation-note">{rec.note}</p>
+                <button className="view-profile-btn">View Profile</button>
+              </div>
+            ))}
           </div>
         </div>
+
       </div>
     </div>
   );
