@@ -1,17 +1,16 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# Kurukkanteyum Kozhiyudeyum Kalyanam 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: RecycleBins
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Rohith Sajeev - Government Engineering College Thrissur
+- Member 2: Sagar P - Government Engineering College Thrissur
 
 ### Project Description
 [2-3 lines about what your project does]
@@ -38,10 +37,14 @@ For Hardware:
 ### Implementation
 For Software:
 # Installation
-[commands]
+Clone the repository
+git clone https://github.com/rohith1612/project.git
+Install dependencies
+npm install
 
 # Run
-[commands]
+npm start
+npm run dev
 
 ### Project Documentation
 For Software:
@@ -88,9 +91,8 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Rohith Sajeev: [Specific contributions]
+- Sagar P: [Specific contributions]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
