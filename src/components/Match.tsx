@@ -3,6 +3,8 @@ import Navigation from "./Navigation";
 import { User } from "../App";
 import "./Match.css";
 import weatherDataJson from "../data/weather.json";
+import Chat from "./Chat";  // ✅ New file for chat page
+
 
 interface MatchProps {
   user: User;
@@ -21,6 +23,8 @@ interface WeatherData {
   sunny: boolean;
 }
 
+
+
 const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
   const [matches, setMatches] = useState<MatchResult[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +35,10 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
   const [showWeatherPopup, setShowWeatherPopup] = useState(false);
   const [showRaindrops, setShowRaindrops] = useState(false);
   const [showSunrays, setShowSunrays] = useState(false);
+
+  // ✅ NEW state to manage chat page
+  const [chatUser, setChatUser] = useState<User | null>(null);
+  
 
   useEffect(() => {
     // Load weather from JSON (simulate fetch)
@@ -102,9 +110,9 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
     setSelectedMatch(null);
   };
 
-  const sendMessage = (matchUser: User) => {
-    alert(`💌 Message sent to ${matchUser.name}! (This is a demo feature)`);
-  };
+const sendMessage = (matchUser: User) => {
+  setChatUser(matchUser); // ✅ Opens the chat page for that user
+};
 
   // Weather popup message
   const getWeatherMessage = () => {
@@ -121,6 +129,17 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
   };
 
   const weatherInfo = getWeatherMessage();
+
+  if (chatUser) {
+  return (
+    <Chat
+      currentUser={user}
+      matchUser={chatUser}
+      onBack={() => setChatUser(null)} // Go back to matches
+    />
+  );
+}
+
 
   return (
     <div className="match-container">
