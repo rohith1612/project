@@ -8,7 +8,7 @@
       "name": "Ms. Eggatha Christie",
       "species": "Chicken",
       "age": 7,
-      "profileImage": "src/assets/hen4.jpg",
+      "profileImage": "src/assets/hen4.jpeg",
       "heightCm": 121,
       "weightKg": 8.0,
       "featherColor": "Shiny Disco",
@@ -17,11 +17,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Cuddle Analyst",
       "incomePerMonthCorn": 50,
-      "hobbies": [
-        "Corn karaoke",
-        "Clucking in Morse code",
-        "Judging other chickens"
-      ],
+      "hobbies": ["Singing", "Clucking", "Judging"],
       "diet": "Pizza-Only",
       "fatherOccupation": "FoxBoxer",
       "motherOccupation": "Coop CEO",
@@ -50,11 +46,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Certified Egg Inspector",
       "incomePerMonthCorn": 39,
-      "hobbies": [
-        "Practicing evil laughs",
-        "Spying on hens for science",
-        "Sneaking into TED Talks"
-      ],
+      "hobbies": ["Swimming", "Singing", "Dancing"],
       "diet": "Worm Vegan",
       "fatherOccupation": "Retired Superhero",
       "motherOccupation": "Feather Model",
@@ -83,11 +75,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Burrow Interior Designer",
       "incomePerMonthCorn": 23,
-      "hobbies": [
-        "Sneaking into TED Talks",
-        "Spying on hens for science",
-        "Collecting feathers (non-creepy)"
-      ],
+      "hobbies": ["Singing", "Judging", "Cycling"],
       "diet": "Cornivore",
       "fatherOccupation": "Worm Farmer",
       "motherOccupation": "Coop CEO",
@@ -116,11 +104,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Hen Whisperer",
       "incomePerMonthCorn": 90,
-      "hobbies": [
-        "Collecting feathers (non-creepy)",
-        "Spying on hens for science",
-        "Doing yoga with ducks"
-      ],
+      "hobbies": ["Dancing", "Singing", "Yoga"],
       "diet": "Cornivore",
       "fatherOccupation": "Henfluencer",
       "motherOccupation": "Henna Tattoo Artist",
@@ -149,11 +133,7 @@
       "qualification": "Honorary Nap Champion",
       "jobTitle": "Burrow Interior Designer",
       "incomePerMonthCorn": 21,
-      "hobbies": [
-        "Collecting feathers (non-creepy)",
-        "Sneaking into TED Talks",
-        "Practicing evil laughs"
-      ],
+      "hobbies": ["Yoga", "Swimming", "Dancing"],
       "diet": "Worm Vegan",
       "fatherOccupation": "FoxBoxer",
       "motherOccupation": "Henna Tattoo Artist",
@@ -182,11 +162,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Full-time Trouble Maker",
       "incomePerMonthCorn": 67,
-      "hobbies": [
-        "Judging other chickens",
-        "Feather fashion shows",
-        "Clucking in Morse code"
-      ],
+      "hobbies": ["Cooking", "Swimming", "Clucking"],
       "diet": "Eggitarian",
       "fatherOccupation": "FoxBoxer",
       "motherOccupation": "Henna Tattoo Artist",
@@ -215,11 +191,7 @@
       "qualification": "Olympic Level Screecher",
       "jobTitle": "Certified Egg Inspector",
       "incomePerMonthCorn": 54,
-      "hobbies": [
-        "Beak painting",
-        "Clucking in Morse code",
-        "Judging other chickens"
-      ],
+      "hobbies": ["Drawing", "Singing", "Judging"],
       "diet": "Worm Vegan",
       "fatherOccupation": "Henfluencer",
       "motherOccupation": "Coop CEO",
@@ -248,7 +220,7 @@
       "qualification": "Honorary Nap Champion",
       "jobTitle": "Certified Egg Inspector",
       "incomePerMonthCorn": 11,
-      "hobbies": ["Feather fashion shows", "Corn karaoke", "Beak painting"],
+      "hobbies": ["Dancing", "Singing", "Drawing"],
       "diet": "Pizza-Only",
       "fatherOccupation": "Retired Superhero",
       "motherOccupation": "Coop CEO",
@@ -277,11 +249,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Coop DJ",
       "incomePerMonthCorn": 80,
-      "hobbies": [
-        "Feather fashion shows",
-        "Beak painting",
-        "Judging other chickens"
-      ],
+      "hobbies": ["Cooking", "Swimming", "Clucking"],
       "diet": "Cornivore",
       "fatherOccupation": "FoxBoxer",
       "motherOccupation": "Nest Blogger",
@@ -310,11 +278,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Coop DJ",
       "incomePerMonthCorn": 45,
-      "hobbies": [
-        "Corn karaoke",
-        "Judging other chickens",
-        "Clucking in Morse code"
-      ],
+      "hobbies": ["Dancing", "Singing", "Drawing"],
       "diet": "Cornivore",
       "fatherOccupation": "FoxBoxer",
       "motherOccupation": "Feather Model",
@@ -343,7 +307,7 @@
       "qualification": "Honorary Nap Champion",
       "jobTitle": "Coop DJ",
       "incomePerMonthCorn": 31,
-      "hobbies": ["Judging other chickens", "Corn karaoke", "Beak painting"],
+      "hobbies": ["Dancing", "Singing", "Drawing"],
       "diet": "Worm Vegan",
       "fatherOccupation": "Retired Superhero",
       "motherOccupation": "Coop CEO",
@@ -372,11 +336,7 @@
       "qualification": "Licensed Cluck Therapist",
       "jobTitle": "Full-time Trouble Maker",
       "incomePerMonthCorn": 20,
-      "hobbies": [
-        "Doing yoga with ducks",
-        "Practicing evil laughs",
-        "Spying on hens for science"
-      ],
+      "hobbies": ["Cooking", "Swimming", "Clucking"],
       "diet": "Air",
       "fatherOccupation": "Henfluencer",
       "motherOccupation": "Feather Model",
@@ -405,11 +365,7 @@
       "qualification": "Olympic Level Screecher",
       "jobTitle": "Hen Whisperer",
       "incomePerMonthCorn": 77,
-      "hobbies": [
-        "Collecting feathers (non-creepy)",
-        "Doing yoga with ducks",
-        "Sneaking into TED Talks"
-      ],
+      "hobbies": ["Cooking", "Swimming", "Clucking"],
       "diet": "Eggitarian",
       "fatherOccupation": "Worm Farmer",
       "motherOccupation": "Coop CEO",
