@@ -59,7 +59,7 @@ npm run dev
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
+# Screenshots 
 Intro and Login Page 
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
 Registration page
@@ -89,9 +89,6 @@ Contact your pair
 ![Workflow](Add your workflow/architecture diagram here)
 *Add caption explaining your workflow*
 
-
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
 - Rohith Sajeev: [Specific contributions]
