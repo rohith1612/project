@@ -35,6 +35,7 @@ dist-ssr/
 *.njsproj
 *.sln
 *.sw?
+*.bolt
 
 # System files
 Thumbs.db
