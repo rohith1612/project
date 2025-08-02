@@ -16,7 +16,7 @@ const Navigation: React.FC<NavigationProps> = ({ user, onLogout }) => {
       <div className="nav-container">
         <div className="nav-brand">
           <span className="nav-logo">🦊💕🐓</span>
-          <span className="nav-title">Kalyaanam</span>
+          <span className="nav-title"> Kurukkante Kalyaanam</span>
         </div>
 
         <div className="nav-links">

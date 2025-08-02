@@ -687,12 +687,30 @@
 }
 
 /* Random raindrop positions */
-.raindrops .raindrop:nth-child(1) { left: 10%; animation-delay: 0s; }
-.raindrops .raindrop:nth-child(2) { left: 20%; animation-delay: 0.3s; }
-.raindrops .raindrop:nth-child(3) { left: 35%; animation-delay: 0.5s; }
-.raindrops .raindrop:nth-child(4) { left: 50%; animation-delay: 0.7s; }
-.raindrops .raindrop:nth-child(5) { left: 65%; animation-delay: 0.2s; }
-.raindrops .raindrop:nth-child(6) { left: 80%; animation-delay: 0.4s; }
+.raindrops .raindrop:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+.raindrops .raindrop:nth-child(2) {
+  left: 20%;
+  animation-delay: 0.3s;
+}
+.raindrops .raindrop:nth-child(3) {
+  left: 35%;
+  animation-delay: 0.5s;
+}
+.raindrops .raindrop:nth-child(4) {
+  left: 50%;
+  animation-delay: 0.7s;
+}
+.raindrops .raindrop:nth-child(5) {
+  left: 65%;
+  animation-delay: 0.2s;
+}
+.raindrops .raindrop:nth-child(6) {
+  left: 80%;
+  animation-delay: 0.4s;
+}
 
 .sunrays {
   position: absolute;
@@ -716,14 +734,30 @@
 }
 
 /* Position sunrays around the center in a circle */
-.sunrays .sunray:nth-child(1) { transform: rotate(0deg) translate(80px); }
-.sunrays .sunray:nth-child(2) { transform: rotate(45deg) translate(80px); }
-.sunrays .sunray:nth-child(3) { transform: rotate(90deg) translate(80px); }
-.sunrays .sunray:nth-child(4) { transform: rotate(135deg) translate(80px); }
-.sunrays .sunray:nth-child(5) { transform: rotate(180deg) translate(80px); }
-.sunrays .sunray:nth-child(6) { transform: rotate(225deg) translate(80px); }
-.sunrays .sunray:nth-child(7) { transform: rotate(270deg) translate(80px); }
-.sunrays .sunray:nth-child(8) { transform: rotate(315deg) translate(80px); }
+.sunrays .sunray:nth-child(1) {
+  transform: rotate(0deg) translate(80px);
+}
+.sunrays .sunray:nth-child(2) {
+  transform: rotate(45deg) translate(80px);
+}
+.sunrays .sunray:nth-child(3) {
+  transform: rotate(90deg) translate(80px);
+}
+.sunrays .sunray:nth-child(4) {
+  transform: rotate(135deg) translate(80px);
+}
+.sunrays .sunray:nth-child(5) {
+  transform: rotate(180deg) translate(80px);
+}
+.sunrays .sunray:nth-child(6) {
+  transform: rotate(225deg) translate(80px);
+}
+.sunrays .sunray:nth-child(7) {
+  transform: rotate(270deg) translate(80px);
+}
+.sunrays .sunray:nth-child(8) {
+  transform: rotate(315deg) translate(80px);
+}
 
 /* Popup Content */
 .popup-content {
@@ -757,32 +791,69 @@
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; } to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes popupBounce {
-  0% { transform: scale(0.7); opacity: 0; }
-  60% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes rainFall {
-  0% { transform: translateY(-20px); opacity: 0; }
-  30% { opacity: 0.7; }
-  100% { transform: translateY(250px); opacity: 0; }
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(250px);
+    opacity: 0;
+  }
 }
 
 @keyframes sunRotate {
-  0% { transform: rotate(0deg) translate(80px) rotate(0deg); }
-  100% { transform: rotate(360deg) translate(80px) rotate(-360deg); }
+  0% {
+    transform: rotate(0deg) translate(80px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(80px) rotate(-360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 @keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
 }

@@ -3,8 +3,7 @@ import Navigation from "./Navigation";
 import { User } from "../App";
 import "./Match.css";
 import weatherDataJson from "../data/weather.json";
-import Chat from "./Chat";  // ✅ New file for chat page
-
+import Chat from "./Chat"; // ✅ New file for chat page
 
 interface MatchProps {
   user: User;
@@ -23,8 +22,6 @@ interface WeatherData {
   sunny: boolean;
 }
 
-
-
 const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
   const [matches, setMatches] = useState<MatchResult[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,24 +35,31 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
 
   // ✅ NEW state to manage chat page
   const [chatUser, setChatUser] = useState<User | null>(null);
-  
 
   useEffect(() => {
-    // Load weather from JSON (simulate fetch)
-    const { rainy, sunny } = weatherDataJson;
-    setWeather({ rainy, sunny });
+    const updateWeather = () => {
+      const rainy = Math.random() < 0.5;
+      const sunny = Math.random() < 0.5;
+      setWeather({ rainy, sunny });
 
-    // Animate weather icons
-    setTimeout(() => setShowRaindrops(rainy), 500);
-    setTimeout(() => setShowSunrays(sunny), 1000);
+      setShowRaindrops(rainy);
+      setShowSunrays(sunny);
 
-    // Decide to show popup or matches
-    if (!(rainy && sunny)) {
-      setShowWeatherPopup(true);
-      setIsLoading(false); // stop match loading
-    } else {
-      findMatches();
-    }
+      if (rainy && sunny) {
+        setShowWeatherPopup(false);
+        findMatches();
+      } else {
+        setMatches([]); // clear old matches
+        setShowWeatherPopup(true);
+        setIsLoading(false);
+      }
+    };
+
+    updateWeather(); // initial run
+
+    const interval = setInterval(updateWeather, 25000); // every 25 seconds
+
+    return () => clearInterval(interval);
   }, [user, users]);
 
   const findMatches = () => {
@@ -110,36 +114,48 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
     setSelectedMatch(null);
   };
 
-const sendMessage = (matchUser: User) => {
-  setChatUser(matchUser); // ✅ Opens the chat page for that user
-};
+  const sendMessage = (matchUser: User) => {
+    setChatUser(matchUser); // ✅ Opens the chat page for that user
+  };
 
   // Weather popup message
   const getWeatherMessage = () => {
-    if (!weather) return { title: "🌤️ Checking Weather...", message: "Loading..." };
+    if (!weather)
+      return { title: "🌤️ Checking Weather...", message: "Loading..." };
     if (weather.rainy && weather.sunny)
-      return { title: "🌈 Perfect Weather!", message: "Time for love to bloom!" };
+      return {
+        title: "🌈 Perfect Weather!",
+        message: "Time for love to bloom!",
+      };
     if (!weather.rainy && !weather.sunny)
-      return { title: "⛅ Cloudy Skies Ahead", message: "We need both ☀️ and 🌧️ for love!" };
+      return {
+        title: "⛅ Cloudy Skies Ahead",
+        message: "We need both ☀️ and 🌧️ for love!",
+      };
     if (weather.rainy && !weather.sunny)
-      return { title: "🌧️ Only Rain", message: "Need some sunshine for magic!" };
+      return {
+        title: "🌧️ Only Rain",
+        message: "Need some sunshine for magic!",
+      };
     if (!weather.rainy && weather.sunny)
-      return { title: "☀️ Only Sun", message: "Need gentle rain for rainbows!" };
+      return {
+        title: "☀️ Only Sun",
+        message: "Need gentle rain for rainbows!",
+      };
     return { title: "🌤️ Weather Unknown", message: "Try again later." };
   };
 
   const weatherInfo = getWeatherMessage();
 
   if (chatUser) {
-  return (
-    <Chat
-      currentUser={user}
-      matchUser={chatUser}
-      onBack={() => setChatUser(null)} // Go back to matches
-    />
-  );
-}
-
+    return (
+      <Chat
+        currentUser={user}
+        matchUser={chatUser}
+        onBack={() => setChatUser(null)} // Go back to matches
+      />
+    );
+  }
 
   return (
     <div className="match-container">
@@ -153,20 +169,29 @@ const sendMessage = (matchUser: User) => {
               {showRaindrops && (
                 <div className="raindrops">
                   {[...Array(20)].map((_, i) => (
-                    <span key={i} className="raindrop">💧</span>
+                    <span key={i} className="raindrop">
+                      💧
+                    </span>
                   ))}
                 </div>
               )}
               {showSunrays && (
                 <div className="sunrays">
                   {[...Array(8)].map((_, i) => (
-                    <span key={i} className="sunray">☀️</span>
+                    <span key={i} className="sunray">
+                      ☀️
+                    </span>
                   ))}
                 </div>
               )}
             </div>
 
-            <button className="close-popup-btn" onClick={() => setShowWeatherPopup(false)}>❌</button>
+            <button
+              className="close-popup-btn"
+              onClick={() => setShowWeatherPopup(false)}
+            >
+              ❌
+            </button>
 
             <div className="popup-content">
               <div className="weather-icon-large">
@@ -194,31 +219,31 @@ const sendMessage = (matchUser: User) => {
           <div className="match-header">
             <h1 className="match-title">💘 Find Your Perfect Match</h1>
             <p className="match-subtitle">
-              Discover {user.type === "fox" ? "chickens" : "foxes"} who share your
-              interests, {user.name}! {user.type === "fox" ? "🦊" : "🐓"}
+              Discover {user.type === "fox" ? "chickens" : "foxes"} who share
+              your interests, {user.name}! {user.type === "fox" ? "🦊" : "🐓"}
             </p>
           </div>
 
-                {/* INSERT MATCH STATS HERE */}
-        <div className="match-stats">
-          <div className="stat-item">
-            <span className="stat-number">{matches.length}</span>
-            <span className="stat-label">Compatible Matches Found</span>
+          {/* INSERT MATCH STATS HERE */}
+          <div className="match-stats">
+            <div className="stat-item">
+              <span className="stat-number">{matches.length}</span>
+              <span className="stat-label">Compatible Matches Found</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">{user.hobbies.length}</span>
+              <span className="stat-label">Your Hobbies</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">
+                {matches.length > 0
+                  ? Math.max(...matches.map((m) => m.compatibilityScore))
+                  : 0}
+                %
+              </span>
+              <span className="stat-label">Highest Compatibility</span>
+            </div>
           </div>
-          <div className="stat-item">
-            <span className="stat-number">{user.hobbies.length}</span>
-            <span className="stat-label">Your Hobbies</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">
-              {matches.length > 0
-                ? Math.max(...matches.map((m) => m.compatibilityScore))
-                : 0}
-              %
-            </span>
-            <span className="stat-label">Highest Compatibility</span>
-          </div>
-        </div>
 
           {isLoading ? (
             <div className="loading-section">
@@ -260,7 +285,8 @@ const sendMessage = (matchUser: User) => {
                   </div>
                   <div className="match-info">
                     <h3 className="match-name">
-                      {match.user.name} {match.user.type === "fox" ? "🦊" : "🐓"}
+                      {match.user.name}{" "}
+                      {match.user.type === "fox" ? "🦊" : "🐓"}
                     </h3>
                     <p className="match-age">{match.user.age} years old</p>
                     <p className="match-job">{match.user.jobTitle}</p>
@@ -309,7 +335,8 @@ const sendMessage = (matchUser: User) => {
                     {selectedMatch.user.type === "fox" ? "🦊" : "🐓"}
                   </h2>
                   <p>
-                    {selectedMatch.user.age} years old • {selectedMatch.user.jobTitle}
+                    {selectedMatch.user.age} years old •{" "}
+                    {selectedMatch.user.jobTitle}
                   </p>
                   <div className="compatibility-score">
                     💖 {selectedMatch.compatibilityScore}% Compatible
@@ -329,12 +356,14 @@ const sendMessage = (matchUser: User) => {
                     <strong>Style:</strong> {selectedMatch.user.style}
                   </p>
                   <p>
-                    <strong>Family:</strong> {selectedMatch.user.familyType} with{" "}
-                    {selectedMatch.user.siblings} siblings
+                    <strong>Family:</strong> {selectedMatch.user.familyType}{" "}
+                    with {selectedMatch.user.siblings} siblings
                   </p>
                 </div>
                 <div className="detail-section">
-                  <h3>💫 Shared Hobbies ({selectedMatch.sharedHobbies.length})</h3>
+                  <h3>
+                    💫 Shared Hobbies ({selectedMatch.sharedHobbies.length})
+                  </h3>
                   <div className="shared-hobbies-list">
                     {selectedMatch.sharedHobbies.map((hobby, i) => (
                       <span key={i} className="hobby-tag shared-large">
