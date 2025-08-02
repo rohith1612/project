@@ -85,8 +85,8 @@ Contact your pair
 
 
 ## Team Contributions
-- Rohith Sajeev: [Specific contributions]
-- Sagar P: [Specific contributions]
+- Rohith Sajeev
+- Sagar P
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
