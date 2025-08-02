@@ -613,3 +613,176 @@
     padding: 16px;
   }
 }
+/* Overlay covers entire screen */
+.weather-error-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Frosted glass popup */
+.weather-error-popup {
+  position: relative;
+  width: 420px;
+  max-width: 90%;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #fff;
+  animation: popupBounce 0.6s ease;
+  overflow: hidden;
+}
+
+/* Close button */
+.close-popup-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.close-popup-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Background animations inside popup */
+.weather-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.raindrops {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.raindrop {
+  position: absolute;
+  font-size: 18px;
+  animation: rainFall 2s linear infinite;
+  opacity: 0.7;
+}
+
+/* Random raindrop positions */
+.raindrops .raindrop:nth-child(1) { left: 10%; animation-delay: 0s; }
+.raindrops .raindrop:nth-child(2) { left: 20%; animation-delay: 0.3s; }
+.raindrops .raindrop:nth-child(3) { left: 35%; animation-delay: 0.5s; }
+.raindrops .raindrop:nth-child(4) { left: 50%; animation-delay: 0.7s; }
+.raindrops .raindrop:nth-child(5) { left: 65%; animation-delay: 0.2s; }
+.raindrops .raindrop:nth-child(6) { left: 80%; animation-delay: 0.4s; }
+
+.sunrays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sunray {
+  position: absolute;
+  font-size: 30px;
+  opacity: 0.7;
+  transform-origin: center;
+  animation: sunRotate 5s linear infinite;
+}
+
+/* Position sunrays around the center in a circle */
+.sunrays .sunray:nth-child(1) { transform: rotate(0deg) translate(80px); }
+.sunrays .sunray:nth-child(2) { transform: rotate(45deg) translate(80px); }
+.sunrays .sunray:nth-child(3) { transform: rotate(90deg) translate(80px); }
+.sunrays .sunray:nth-child(4) { transform: rotate(135deg) translate(80px); }
+.sunrays .sunray:nth-child(5) { transform: rotate(180deg) translate(80px); }
+.sunrays .sunray:nth-child(6) { transform: rotate(225deg) translate(80px); }
+.sunrays .sunray:nth-child(7) { transform: rotate(270deg) translate(80px); }
+.sunrays .sunray:nth-child(8) { transform: rotate(315deg) translate(80px); }
+
+/* Popup Content */
+.popup-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+
+.weather-icon-large {
+  font-size: 60px;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.popup-title {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.popup-message {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.manual-close-msg {
+  font-size: 0.9rem;
+  color: #ffdada;
+  animation: blink 1.2s infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+@keyframes popupBounce {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes rainFall {
+  0% { transform: translateY(-20px); opacity: 0; }
+  30% { opacity: 0.7; }
+  100% { transform: translateY(250px); opacity: 0; }
+}
+
+@keyframes sunRotate {
+  0% { transform: rotate(0deg) translate(80px) rotate(0deg); }
+  100% { transform: rotate(360deg) translate(80px) rotate(-360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
