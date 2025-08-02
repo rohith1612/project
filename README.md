@@ -63,7 +63,7 @@ For Software:
 Intro and Login Page 
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
 Registration page
-![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Registration_page.png?raw=true)
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Screenshot%202025-08-02%20092436.png?raw=true)
 Home Page
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Home_page.png?raw=true)
 Profile page
