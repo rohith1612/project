@@ -76,7 +76,7 @@ PickUp corner
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/pickup_corner.png?raw=true)
 Find your match
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/find_match.png?raw=true)
-Found Your matches
+Found Your matches in Sunny and rainy comes together 
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/your_match.png?raw=true)
 Choose your match
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/anotherprofile.png?raw=true)
