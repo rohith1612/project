@@ -71,7 +71,7 @@ Profile page
 Photo feed Page
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Screenshot%202025-08-02%20091409.png?raw=true)
 PickUp corner
-![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/pickup_corner.png?raw=true)
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Screenshot%202025-08-02%20091739.png?raw=true)
 Find your match
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/find_match.png?raw=true)
 Found Your matches in Sunny and rainy comes together 
