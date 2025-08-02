@@ -13,27 +13,37 @@
 - Member 2: Sagar P - Government Engineering College Thrissur
 
 ### Project Description
-[2-3 lines about what your project does]
+On a hot sunny day, it suddenly started raining—a sign in Kerala that the fox and hen are getting married. That sparked the idea for our quirky React app: "Kurakkanum Kozhiyudeyum Kalyanam". In this fun little world, mischievous foxes and adorable hens create profiles, drop cheesy pickup lines, and wait for their match—but only when it’s both sunny and rainy. Though they’re natural enemies, here they live like humans—posting pictures, flirting, and hoping to find love. Wild, weird, and delightfully useless.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Foxes and hens can’t fall in love—because nature said no. And apparently, they can only marry when it's sunny and rainy at the same time (Kerala folks know 👀). But what if they wanted to find love like the rest of us—flirting, posting selfies, and waiting for "the one"?
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+We built a React app where naughty foxes and adorable hens can finally mingle! With random pickup lines, weather-based matchmaking, and chaotic profiles, it’s the most unnecessary love app ever made. Why? Because someone had to make it happen. 🌧️☀️❤️
 
 ## Technical Details
 ### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+💻 Software Stack
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+Languages used:
+- JavaScript
+- TypeScript
+- HTML
+- CSS
 
+Frameworks used:
+- React
+- Vite
+
+Libraries used:
+- React Router
+- Tailwind CSS (for styling)
+- Custom image & weather logic (for chaos)
+
+Tools used:
+- Vercel (deployment)
+- VS Code (code & vibes)
+- Git & GitHub (version control & regrets)
 ### Implementation
 For Software:
 # Installation
