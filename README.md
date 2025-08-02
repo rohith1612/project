@@ -50,8 +50,18 @@ npm run dev
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+Intro and Login Page 
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+Registration page
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Registration_page.png?raw=true)
+Home Page
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Home_page.png?raw=true)
+Home Page
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Homepage_2.png?raw=true)
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+
+
 
 ![Screenshot2](Add screenshot 2 here with proper name)
 *Add caption explaining what this shows*
@@ -63,29 +73,6 @@ For Software:
 ![Workflow](Add your workflow/architecture diagram here)
 *Add caption explaining your workflow*
 
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
 
 # Additional Demos
 [Add any extra demo materials/links]
