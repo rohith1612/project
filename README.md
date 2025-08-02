@@ -50,7 +50,14 @@ npm run dev
 For Software:
 
 # Screenshots (Add at least 3)
+Intro and Login Page 
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+Registration page
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Registration_page.png?raw=true)
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+
 
 
 ![Screenshot2](Add screenshot 2 here with proper name)
