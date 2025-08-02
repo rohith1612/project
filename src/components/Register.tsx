@@ -15,7 +15,7 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
     name: '',
     type: 'fox' as 'fox' | 'chicken',
     age: '',
-    hobbies: '',
+    hobbies: [] as string[],
     education: '',
     jobTitle: '',
     diet: ''
@@ -53,7 +53,7 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
       qualification: 'Certified Love Seeker',
       jobTitle: formData.jobTitle || 'Professional Companion Seeker',
       incomePerMonthCorn: Math.floor(Math.random() * 20) + 5,
-      hobbies: formData.hobbies.split(',').map(h => h.trim()).filter(h => h),
+      hobbies: formData.hobbies,
       diet: formData.diet || 'Balanced',
       fatherOccupation: 'Family Head',
       motherOccupation: 'Homemaker',
@@ -81,6 +81,20 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
       [e.target.name]: e.target.value
     });
   };
+
+    // ✅ Add hobby options here
+  const hobbyOptions = [
+    "Dancing",
+    "Swimming",
+    "Reading",
+    "Cooking",
+    "Traveling",
+    "Photography",
+    "Gaming",
+    "Music",
+    "Painting",
+    "Cycling",
+  ];
 
   return (
     <div className="register-container">
@@ -216,17 +230,29 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="hobbies">Hobbies (comma separated)</label>
-            <textarea
-              id="hobbies"
-              name="hobbies"
-              value={formData.hobbies}
-              onChange={handleInputChange}
-              placeholder="e.g., Dancing, Swimming, Reading, Cooking"
-              className="form-textarea"
-              rows={3}
-            />
+            <label htmlFor="hobbies">Select Your Hobbies</label>
+            <div className="hobbies-list">
+              {hobbyOptions.map((hobby) => (
+                <label key={hobby} className="hobby-checkbox">
+                  <input
+                    type="checkbox"
+                    value={hobby}
+                    checked={formData.hobbies.includes(hobby)}
+                    onChange={(e) => {
+                      const selectedHobby = e.target.value;
+                      const newHobbies = formData.hobbies.includes(selectedHobby)
+                        ? formData.hobbies.filter((h) => h !== selectedHobby)
+                        : [...formData.hobbies, selectedHobby];
+
+                      setFormData({ ...formData, hobbies: newHobbies });
+                    }}
+                  />
+                  {hobby}
+                </label>
+              ))}
+            </div>
           </div>
+
 
           {error && <div className="error-message">❌ {error}</div>}
 
