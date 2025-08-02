@@ -60,7 +60,6 @@ function App() {
   const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([]);
 
   useEffect(() => {
-    // Clear user session on refresh
     setCurrentUser(null);
   }, []);
 
