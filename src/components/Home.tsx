@@ -102,27 +102,27 @@ const Home: React.FC<HomeProps> = ({ user, onLogout }) => {
           <div className="recommendations-grid">
             {[
               {
-                name: "Rosie Hen",
+                name: "Rosie",
                 image: "/src/assets/fox1.jpg",
                 note: "Sunny season partner 🌞",
               },
               {
-                name: "Clucky Belle",
+                name: "Clucky",
                 image: "/src/assets/fox2.jpeg",
                 note: "Rainy season cuddle 🐥",
               },
               {
-                name: "Scarlet Hen",
+                name: "Scarlet",
                 image: "/src/assets/fox3.jpeg",
                 note: "Loves evening walks 🌇",
               },
               {
-                name: "Amber Hen",
+                name: "Amber",
                 image: "/src/assets/fox4.jpeg",
                 note: "Perfect festival companion 🎉",
               },
               {
-                name: "Luna Hen",
+                name: "Luna",
                 image: "/src/assets/fox5.jpeg",
                 note: "Adventurous and charming ✨",
               },

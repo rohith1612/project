@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Login.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Login.css";
 
 interface LoginProps {
   onLogin: (username: string, password: string) => boolean;
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsLoading(true);
 
     if (!username || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       setIsLoading(false);
       return;
     }
@@ -27,7 +27,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     setTimeout(() => {
       const success = onLogin(username, password);
       if (!success) {
-        setError('Invalid username or password');
+        setError("Invalid username or password");
       }
       setIsLoading(false);
     }, 500);
@@ -41,13 +41,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className="floating-emoji">💕</div>
         <div className="floating-emoji">🌈</div>
       </div>
-      
+
       <div className="login-card">
         <div className="login-header">
-          <h1 className="login-title">🦊💕🐓 X Match Finder</h1>
-          <p className="login-subtitle">Where foxes and chickens find love!</p>
+          <h1 className="login-title">🦊💕🐓 Kurukkantem Kozhidem Kalyanam</h1>
+          <p className="login-subtitle">
+            Mazhayum Veyilum, Ohh Kurukkante kalyanam!!
+          </p>
           <div className="weather-info">
-            ☀️🌧️ When it's sunny and rainy, foxes and chickens marry!
+            ☀️ It only works when the weather is confused !!
           </div>
         </div>
 
@@ -78,18 +80,23 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
           {error && <div className="error-message">❌ {error}</div>}
 
-          <button 
-            type="submit" 
-            className={`login-btn ${isLoading ? 'loading' : ''}`}
+          <button
+            type="submit"
+            className={`login-btn ${isLoading ? "loading" : ""}`}
             disabled={isLoading}
           >
-            {isLoading ? '🔄 Logging in...' : '💕 Find Love'}
+            {isLoading ? "🔄 Logging in..." : "💕 Find Love"}
           </button>
         </form>
 
         <div className="login-footer">
-          <p>Don't have an account? <Link to="/register" className="register-link">🎉 Register here</Link></p>
-          
+          <p>
+            Don't have an account?{" "}
+            <Link to="/register" className="register-link">
+              🎉 Register here
+            </Link>
+          </p>
+
           <div className="demo-accounts">
             <h4>🎮 Demo Accounts:</h4>
             <div className="demo-grid">
