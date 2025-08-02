@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import { User } from "../App";
 import "./Match.css";
+import weatherDataJson from "../data/weather.json";
 
 interface MatchProps {
   user: User;
@@ -15,13 +16,38 @@ interface MatchResult {
   compatibilityScore: number;
 }
 
+interface WeatherData {
+  rainy: boolean;
+  sunny: boolean;
+}
+
 const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
   const [matches, setMatches] = useState<MatchResult[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedMatch, setSelectedMatch] = useState<MatchResult | null>(null);
 
+  // Weather state
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [showWeatherPopup, setShowWeatherPopup] = useState(false);
+  const [showRaindrops, setShowRaindrops] = useState(false);
+  const [showSunrays, setShowSunrays] = useState(false);
+
   useEffect(() => {
-    findMatches();
+    // Load weather from JSON (simulate fetch)
+    const { rainy, sunny } = weatherDataJson;
+    setWeather({ rainy, sunny });
+
+    // Animate weather icons
+    setTimeout(() => setShowRaindrops(rainy), 500);
+    setTimeout(() => setShowSunrays(sunny), 1000);
+
+    // Decide to show popup or matches
+    if (!(rainy && sunny)) {
+      setShowWeatherPopup(true);
+      setIsLoading(false); // stop match loading
+    } else {
+      findMatches();
+    }
   }, [user, users]);
 
   const findMatches = () => {
@@ -39,15 +65,12 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
             matchUser.hobbies.includes(hobby)
           );
 
-          // Calculate compatibility based on shared hobbies and other factors
           let compatibilityScore = sharedHobbies.length * 25;
 
-          // Add bonus points for similar age
           const ageDiff = Math.abs(user.age - matchUser.age);
           if (ageDiff <= 1) compatibilityScore += 20;
           else if (ageDiff <= 2) compatibilityScore += 10;
 
-          // Add bonus for similar diet
           if (
             user.diet.toLowerCase().includes("vegetarian") &&
             matchUser.diet.toLowerCase().includes("vegetarian")
@@ -55,7 +78,6 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
             compatibilityScore += 15;
           }
 
-          // Cap at 100%
           compatibilityScore = Math.min(100, compatibilityScore);
 
           return {
@@ -64,8 +86,8 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
             compatibilityScore,
           };
         })
-        .filter((match) => match.sharedHobbies.length > 0) // Only show matches with shared hobbies
-        .sort((a, b) => b.compatibilityScore - a.compatibilityScore); // Sort by compatibility
+        .filter((match) => match.sharedHobbies.length > 0)
+        .sort((a, b) => b.compatibilityScore - a.compatibilityScore);
 
       setMatches(matchResults);
       setIsLoading(false);
@@ -81,124 +103,151 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
   };
 
   const sendMessage = (matchUser: User) => {
-    // This would typically open a messaging interface
     alert(`💌 Message sent to ${matchUser.name}! (This is a demo feature)`);
   };
+
+  // Weather popup message
+  const getWeatherMessage = () => {
+    if (!weather) return { title: "🌤️ Checking Weather...", message: "Loading..." };
+    if (weather.rainy && weather.sunny)
+      return { title: "🌈 Perfect Weather!", message: "Time for love to bloom!" };
+    if (!weather.rainy && !weather.sunny)
+      return { title: "⛅ Cloudy Skies Ahead", message: "We need both ☀️ and 🌧️ for love!" };
+    if (weather.rainy && !weather.sunny)
+      return { title: "🌧️ Only Rain", message: "Need some sunshine for magic!" };
+    if (!weather.rainy && weather.sunny)
+      return { title: "☀️ Only Sun", message: "Need gentle rain for rainbows!" };
+    return { title: "🌤️ Weather Unknown", message: "Try again later." };
+  };
+
+  const weatherInfo = getWeatherMessage();
 
   return (
     <div className="match-container">
       <Navigation user={user} onLogout={onLogout} />
 
-      <div className="match-content">
-        <div className="match-header">
-          <h1 className="match-title">💘 Find Your Perfect Match</h1>
-          <p className="match-subtitle">
-            Discover {user.type === "fox" ? "chickens" : "foxes"} who share your
-            interests, {user.name}! {user.type === "fox" ? "🦊" : "🐓"}
-          </p>
-        </div>
-
-        {isLoading ? (
-          <div className="loading-section">
-            <div className="loading-spinner">🔄</div>
-            <p>Finding your perfect matches...</p>
-            <div className="loading-hearts">💕 💖 💕 💖 💕</div>
-          </div>
-        ) : (
-          <>
-            <div className="match-stats">
-              <div className="stat-item">
-                <span className="stat-number">{matches.length}</span>
-                <span className="stat-label">Compatible Matches Found</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">{user.hobbies.length}</span>
-                <span className="stat-label">Your Hobbies</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">
-                  {matches.length > 0
-                    ? Math.max(...matches.map((m) => m.compatibilityScore))
-                    : 0}
-                  %
-                </span>
-                <span className="stat-label">Highest Compatibility</span>
-              </div>
+      {/* Weather Popup */}
+      {showWeatherPopup && (
+        <div className="weather-error-overlay">
+          <div className="weather-error-popup">
+            <div className="weather-background">
+              {showRaindrops && (
+                <div className="raindrops">
+                  {[...Array(20)].map((_, i) => (
+                    <span key={i} className="raindrop">💧</span>
+                  ))}
+                </div>
+              )}
+              {showSunrays && (
+                <div className="sunrays">
+                  {[...Array(8)].map((_, i) => (
+                    <span key={i} className="sunray">☀️</span>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {matches.length === 0 ? (
-              <div className="no-matches">
-                <div className="no-matches-icon">
-                  {user.type === "fox" ? "🐓" : "🦊"}
-                </div>
-                <h3>No matches found yet!</h3>
-                <p>Don't worry, {user.name}! Here are some tips:</p>
-                <ul>
-                  <li>✨ Add more hobbies to your profile</li>
-                  <li>🔄 Check back later for new members</li>
-                  <li>💌 Try the Pickup Corner for conversation starters</li>
-                </ul>
+            <button className="close-popup-btn" onClick={() => setShowWeatherPopup(false)}>❌</button>
+
+            <div className="popup-content">
+              <div className="weather-icon-large">
+                {!weather
+                  ? "🌤️"
+                  : weather.rainy && weather.sunny
+                  ? "🌈"
+                  : weather.rainy
+                  ? "🌧️"
+                  : weather.sunny
+                  ? "☀️"
+                  : "⛅"}
               </div>
-            ) : (
-              <div className="matches-grid">
-                {matches.map((match, index) => (
-                  <div
-                    key={match.user.id}
-                    className="match-card"
-                    onClick={() => openMatchDetails(match)}
-                  >
-                    <div className="match-rank">#{index + 1}</div>
+              <h2 className="popup-title">{weatherInfo.title}</h2>
+              <p className="popup-message">{weatherInfo.message}</p>
+              <div className="manual-close-msg">❌ Close to continue</div>
+            </div>
+          </div>
+        </div>
+      )}
 
-                    <div className="match-image-container">
-                      <img
-                        src={match.user.profileImage}
-                        alt={match.user.name}
-                        className="match-image"
-                      />
-                      <div className="compatibility-badge">
-                        {match.compatibilityScore}% ❤️
-                      </div>
-                    </div>
+      {/* Only render matches if weather is perfect */}
+      {!showWeatherPopup && (
+        <div className="match-content">
+          <div className="match-header">
+            <h1 className="match-title">💘 Find Your Perfect Match</h1>
+            <p className="match-subtitle">
+              Discover {user.type === "fox" ? "chickens" : "foxes"} who share your
+              interests, {user.name}! {user.type === "fox" ? "🦊" : "🐓"}
+            </p>
+          </div>
 
-                    <div className="match-info">
-                      <h3 className="match-name">
-                        {match.user.name}{" "}
-                        {match.user.type === "fox" ? "🦊" : "🐓"}
-                      </h3>
-                      <p className="match-age">{match.user.age} years old</p>
-                      <p className="match-job">{match.user.jobTitle}</p>
-
-                      <div className="shared-hobbies">
-                        <h4>
-                          💫 Shared Interests ({match.sharedHobbies.length})
-                        </h4>
-                        <div className="hobby-tags">
-                          {match.sharedHobbies.slice(0, 3).map((hobby, i) => (
-                            <span key={i} className="hobby-tag shared">
-                              {hobby}
-                            </span>
-                          ))}
-                          {match.sharedHobbies.length > 3 && (
-                            <span className="hobby-tag more">
-                              +{match.sharedHobbies.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="match-actions">
-                      <button className="view-profile-btn">
-                        👁️ View Profile
-                      </button>
+          {isLoading ? (
+            <div className="loading-section">
+              <div className="loading-spinner">🔄</div>
+              <p>Finding your perfect matches...</p>
+              <div className="loading-hearts">💕 💖 💕 💖 💕</div>
+            </div>
+          ) : matches.length === 0 ? (
+            <div className="no-matches">
+              <div className="no-matches-icon">
+                {user.type === "fox" ? "🐓" : "🦊"}
+              </div>
+              <h3>No matches found yet!</h3>
+              <p>Don't worry, {user.name}! Here are some tips:</p>
+              <ul>
+                <li>✨ Add more hobbies to your profile</li>
+                <li>🔄 Check back later for new members</li>
+                <li>💌 Try the Pickup Corner for conversation starters</li>
+              </ul>
+            </div>
+          ) : (
+            <div className="matches-grid">
+              {matches.map((match, index) => (
+                <div
+                  key={match.user.id}
+                  className="match-card"
+                  onClick={() => openMatchDetails(match)}
+                >
+                  <div className="match-rank">#{index + 1}</div>
+                  <div className="match-image-container">
+                    <img
+                      src={match.user.profileImage}
+                      alt={match.user.name}
+                      className="match-image"
+                    />
+                    <div className="compatibility-badge">
+                      {match.compatibilityScore}% ❤️
                     </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
-      </div>
+                  <div className="match-info">
+                    <h3 className="match-name">
+                      {match.user.name} {match.user.type === "fox" ? "🦊" : "🐓"}
+                    </h3>
+                    <p className="match-age">{match.user.age} years old</p>
+                    <p className="match-job">{match.user.jobTitle}</p>
+                    <div className="shared-hobbies">
+                      <h4>
+                        💫 Shared Interests ({match.sharedHobbies.length})
+                      </h4>
+                      <div className="hobby-tags">
+                        {match.sharedHobbies.slice(0, 3).map((hobby, i) => (
+                          <span key={i} className="hobby-tag shared">
+                            {hobby}
+                          </span>
+                        ))}
+                        {match.sharedHobbies.length > 3 && (
+                          <span className="hobby-tag more">
+                            +{match.sharedHobbies.length - 3} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Match Details Modal */}
       {selectedMatch && (
@@ -207,7 +256,6 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
             <button className="close-modal-btn" onClick={closeMatchDetails}>
               ❌
             </button>
-
             <div className="modal-content">
               <div className="modal-header">
                 <img
@@ -221,15 +269,13 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
                     {selectedMatch.user.type === "fox" ? "🦊" : "🐓"}
                   </h2>
                   <p>
-                    {selectedMatch.user.age} years old •{" "}
-                    {selectedMatch.user.jobTitle}
+                    {selectedMatch.user.age} years old • {selectedMatch.user.jobTitle}
                   </p>
                   <div className="compatibility-score">
                     💖 {selectedMatch.compatibilityScore}% Compatible
                   </div>
                 </div>
               </div>
-
               <div className="modal-details">
                 <div className="detail-section">
                   <h3>🎯 About {selectedMatch.user.name}</h3>
@@ -243,15 +289,12 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
                     <strong>Style:</strong> {selectedMatch.user.style}
                   </p>
                   <p>
-                    <strong>Family:</strong> {selectedMatch.user.familyType}{" "}
-                    with {selectedMatch.user.siblings} siblings
+                    <strong>Family:</strong> {selectedMatch.user.familyType} with{" "}
+                    {selectedMatch.user.siblings} siblings
                   </p>
                 </div>
-
                 <div className="detail-section">
-                  <h3>
-                    💫 Shared Hobbies ({selectedMatch.sharedHobbies.length})
-                  </h3>
+                  <h3>💫 Shared Hobbies ({selectedMatch.sharedHobbies.length})</h3>
                   <div className="shared-hobbies-list">
                     {selectedMatch.sharedHobbies.map((hobby, i) => (
                       <span key={i} className="hobby-tag shared-large">
@@ -260,7 +303,6 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
                     ))}
                   </div>
                 </div>
-
                 <div className="detail-section">
                   <h3>🎨 All Their Hobbies</h3>
                   <div className="all-hobbies-list">
@@ -279,7 +321,6 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
                   </div>
                 </div>
               </div>
-
               <div className="modal-actions">
                 <button
                   className="send-message-btn"
