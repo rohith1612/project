@@ -83,10 +83,6 @@ Contact your pair
 
 
 
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
 
 ## Team Contributions
 - Rohith Sajeev: [Specific contributions]
