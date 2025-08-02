@@ -8,7 +8,7 @@
       "name": "Ms. Feathery Queen",
       "species": "Chicken",
       "age": 7,
-      "profileImage": "src/assets/hen4.jpeg",
+      "profileImage": "assets/hen4.jpeg",
       "heightCm": 121,
       "weightKg": 8.0,
       "featherColor": "Shiny Disco",
@@ -37,7 +37,7 @@
       "name": "Mr. Kurukkan",
       "species": "Fox",
       "age": 2,
-      "profileImage": "src/assets/fox5.jpeg",
+      "profileImage": "assets/fox5.jpeg",
       "heightCm": 76,
       "weightKg": 28.3,
       "furColor": "Matte Black",
@@ -66,7 +66,7 @@
       "name": "Mr. Captain Tailspin",
       "species": "Fox",
       "age": 8,
-      "profileImage": "src/assets/fox3.jpeg",
+      "profileImage": "assets/fox3.jpeg",
       "heightCm": 85,
       "weightKg": 13.9,
       "furColor": "Shiny Disco",
@@ -95,7 +95,7 @@
       "name": "Mr. Sneako Foxo",
       "species": "Fox",
       "age": 3,
-      "profileImage": "src/assets/fox4.jpeg",
+      "profileImage": "assets/fox4.jpeg",
       "heightCm": 63,
       "weightKg": 10.2,
       "furColor": "Matte Black",
@@ -124,7 +124,7 @@
       "name": "Mr. Sir WhiskerTwist",
       "species": "Fox",
       "age": 6,
-      "profileImage": "src/assets/fox2.jpeg",
+      "profileImage": "assets/fox2.jpeg",
       "heightCm": 114,
       "weightKg": 29.4,
       "furColor": "Invisible",
@@ -153,7 +153,7 @@
       "name": "Ms. Cluck Norris",
       "species": "Chicken",
       "age": 6,
-      "profileImage": "src/assets/hen2.webp",
+      "profileImage": "assets/hen2.webp",
       "heightCm": 50,
       "weightKg": 8.9,
       "featherColor": "Invisible",
@@ -182,7 +182,7 @@
       "name": "Ms. Feather Locklear",
       "species": "Chicken",
       "age": 7,
-      "profileImage": "src/assets/hen5.jpg",
+      "profileImage": "assets/hen5.jpg",
       "heightCm": 73,
       "weightKg": 16.1,
       "featherColor": "Invisible",
@@ -211,7 +211,7 @@
       "name": "Ms. Hen Solo",
       "species": "Chicken",
       "age": 4,
-      "profileImage": "src/assets/hen1.avif",
+      "profileImage": "assets/hen1.avif",
       "heightCm": 94,
       "weightKg": 13.3,
       "featherColor": "Shiny Disco",
@@ -230,7 +230,7 @@
       "lookingFor": "Fox",
       "status": "Single and Fabulous",
       "lastLogin": "2025-08-02T10:40:00Z",
-      "postImages": ["src/assets/hen1.avif"]
+      "postImages": ["assets/hen1.avif"]
     },
     {
       "id": "chicken_007",
@@ -240,7 +240,7 @@
       "name": "Ms. Yolkie Minaj",
       "species": "Chicken",
       "age": 3,
-      "profileImage": "src/assets/hen7.jpg",
+      "profileImage": "assets/hen7.jpg",
       "heightCm": 116,
       "weightKg": 4.9,
       "featherColor": "Rainbow",
@@ -269,7 +269,7 @@
       "name": "Ms. Lady Beakface",
       "species": "Chicken",
       "age": 5,
-      "profileImage": "src/assets/hen3.jpg",
+      "profileImage": "assets/hen3.jpg",
       "heightCm": 125,
       "weightKg": 16.3,
       "featherColor": "Shiny Disco",
@@ -288,7 +288,7 @@
       "lookingFor": "Fox",
       "status": "Single and Fabulous",
       "lastLogin": "2025-08-01T01:23:00Z",
-      "postImages": ["src/assets/hen3.jpg"]
+      "postImages": ["assets/hen3.jpg"]
     },
     {
       "id": "chicken_006",
@@ -298,7 +298,7 @@
       "name": "Ms. Madam Cluckers",
       "species": "Chicken",
       "age": 2,
-      "profileImage": "src/assets/hen6.avif",
+      "profileImage": "assets/hen6.avif",
       "heightCm": 91,
       "weightKg": 6.9,
       "featherColor": "Matte Black",
@@ -327,7 +327,7 @@
       "name": "Mr. Foxy McSneakface",
       "species": "Fox",
       "age": 8,
-      "profileImage": "src/assets/fox1.jpg",
+      "profileImage": "assets/fox1.jpg",
       "heightCm": 89,
       "weightKg": 13.2,
       "furColor": "Matte Black",
@@ -346,7 +346,7 @@
       "lookingFor": "Hen",
       "status": "Single and Fabulous",
       "lastLogin": "2025-08-02T05:13:00Z",
-      "postImages": ["src/assets/fox1.jpg"]
+      "postImages": ["assets/fox1.jpg"]
     },
     {
       "id": "fox_006",
@@ -356,7 +356,7 @@
       "name": "Mr. Howlstrom",
       "species": "Fox",
       "age": 5,
-      "profileImage": "src/assets/fox6.jpg",
+      "profileImage": "assets/fox6.jpg",
       "heightCm": 106,
       "weightKg": 7.6,
       "furColor": "Matte Black",
@@ -375,7 +375,7 @@
       "lookingFor": "Hen",
       "status": "Single and Fabulous",
       "lastLogin": "2025-08-01T14:13:00Z",
-      "postImages": ["src/assets/fox6.jpg"]
+      "postImages": ["assets/fox6.jpg"]
     }
   ]
 }

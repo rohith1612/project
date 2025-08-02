@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import { User } from "../App";
 import "./Match.css";
-import weatherDataJson from "../data/weather.json";
-import Chat from "./Chat"; // ✅ New file for chat page
+import Chat from "./Chat";
 
 interface MatchProps {
   user: User;

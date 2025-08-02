@@ -37,22 +37,22 @@ const PickupCorner: React.FC<PickupCornerProps> = ({ user, onLogout }) => {
   >([]);
 
   const foxImages = [
-    "/src/assets/fox1.jpg",
-    "/src/assets/fox2.jpeg",
-    "/src/assets/fox3.jpeg",
-    "/src/assets/fox4.jpeg",
-    "/src/assets/fox5.jpeg",
-    "/src/assets/fox6.jpg",
+    "/assets/fox1.jpg",
+    "/assets/fox2.jpeg",
+    "/assets/fox3.jpeg",
+    "/assets/fox4.jpeg",
+    "/assets/fox5.jpeg",
+    "/assets/fox6.jpg",
   ];
 
   const henImages = [
-    "/src/assets/hen1.avif",
-    "/src/assets/hen2.webp",
-    "/src/assets/hen3.jpg",
-    "/src/assets/hen4.jpeg",
-    "/src/assets/hen5.jpg",
-    "/src/assets/hen6.avif",
-    "/src/assets/hen7.jpg",
+    "/assets/hen1.avif",
+    "/assets/hen2.webp",
+    "/assets/hen3.jpg",
+    "/assets/hen4.jpeg",
+    "/assets/hen5.jpg",
+    "/assets/hen6.avif",
+    "/assets/hen7.jpg",
   ];
 
   const mockUsers = [

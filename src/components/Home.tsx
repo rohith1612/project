@@ -55,18 +55,18 @@ const Home: React.FC<HomeProps> = ({ user, onLogout }) => {
             {[
               {
                 name: "Foxy & Rosie",
-                img: "src/assets/couple1.png",
+                img: "assets/couple1.png",
                 story:
                   "Met during the spring festival, now happily raising 3 chicks! 🐣",
               },
               {
                 name: "Cluckster & Bella",
-                img: "src/assets/couple2.png",
+                img: "assets/couple2.png",
                 story: "A monsoon romance that turned into lifelong love 🌧❤️",
               },
               {
                 name: "Amber & Rusty",
-                img: "src/assets/couple3.png",
+                img: "assets/couple3.png",
                 story: "Bonded over corn trading and evening walks 🌽✨",
               },
             ].map((t, i) => (
@@ -103,27 +103,27 @@ const Home: React.FC<HomeProps> = ({ user, onLogout }) => {
             {[
               {
                 name: "Rosie",
-                image: "/src/assets/fox1.jpg",
+                image: "/assets/fox1.jpg",
                 note: "Sunny season partner 🌞",
               },
               {
                 name: "Clucky",
-                image: "/src/assets/fox2.jpeg",
+                image: "/assets/fox2.jpeg",
                 note: "Rainy season cuddle 🐥",
               },
               {
                 name: "Scarlet",
-                image: "/src/assets/fox3.jpeg",
+                image: "/assets/fox3.jpeg",
                 note: "Loves evening walks 🌇",
               },
               {
                 name: "Amber",
-                image: "/src/assets/fox4.jpeg",
+                image: "/assets/fox4.jpeg",
                 note: "Perfect festival companion 🎉",
               },
               {
                 name: "Luna",
-                image: "/src/assets/fox5.jpeg",
+                image: "/assets/fox5.jpeg",
                 note: "Adventurous and charming ✨",
               },
             ].map((rec, index) => (
