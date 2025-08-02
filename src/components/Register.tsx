@@ -1,88 +1,100 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { User } from '../App';
-import './Register.css';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { User } from "../App";
+import "./Register.css";
 
 interface RegisterProps {
-  onRegister: (userData: Omit<User, 'id' | 'lastLogin' | 'postImages'>) => boolean;
+  onRegister: (
+    userData: Omit<User, "id" | "lastLogin" | "postImages">
+  ) => boolean;
 }
 
 const Register: React.FC<RegisterProps> = ({ onRegister }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    name: '',
-    type: 'fox' as 'fox' | 'chicken',
-    age: '',
+    username: "",
+    password: "",
+    name: "",
+    type: "fox" as "fox" | "chicken",
+    age: "",
     hobbies: [] as string[],
-    education: '',
-    jobTitle: '',
-    diet: ''
+    education: "",
+    jobTitle: "",
+    diet: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsLoading(true);
 
-    if (!formData.username || !formData.password || !formData.name || !formData.age) {
-      setError('Please fill in all required fields');
+    if (
+      !formData.username ||
+      !formData.password ||
+      !formData.name ||
+      !formData.age
+    ) {
+      setError("Please fill in all required fields");
       setIsLoading(false);
       return;
     }
 
-    const userData: Omit<User, 'id' | 'lastLogin' | 'postImages'> = {
+    const userData: Omit<User, "id" | "lastLogin" | "postImages"> = {
       username: formData.username,
       password: formData.password,
       type: formData.type,
       name: formData.name,
-      species: formData.type === 'fox' ? 'Fox' : 'Chicken',
+      species: formData.type === "fox" ? "Fox" : "Chicken",
       age: parseInt(formData.age),
-      profileImage: formData.type === 'fox' 
-        ? 'https://images.pexels.com/photos/162140/fox-animal-nature-orange-162140.jpeg?auto=compress&cs=tinysrgb&w=400'
-        : 'https://images.pexels.com/photos/1300375/pexels-photo-1300375.jpeg?auto=compress&cs=tinysrgb&w=400',
-      heightCm: formData.type === 'fox' ? 115 : 40,
-      weightKg: formData.type === 'fox' ? 25 : 3,
-      furColor: formData.type === 'fox' ? 'Reddish Brown' : undefined,
-      featherColor: formData.type === 'chicken' ? 'Mixed Colors' : undefined,
-      style: 'Unique and charming',
-      education: formData.education || 'School of Life',
-      qualification: 'Certified Love Seeker',
-      jobTitle: formData.jobTitle || 'Professional Companion Seeker',
+      profileImage:
+        formData.type === "fox"
+          ? "https://images.pexels.com/photos/162140/fox-animal-nature-orange-162140.jpeg?auto=compress&cs=tinysrgb&w=400"
+          : "https://images.pexels.com/photos/1300375/pexels-photo-1300375.jpeg?auto=compress&cs=tinysrgb&w=400",
+      heightCm: formData.type === "fox" ? 115 : 40,
+      weightKg: formData.type === "fox" ? 25 : 3,
+      furColor: formData.type === "fox" ? "Reddish Brown" : undefined,
+      featherColor: formData.type === "chicken" ? "Mixed Colors" : undefined,
+      style: "Unique and charming",
+      education: formData.education || "School of Life",
+      qualification: "Certified Love Seeker",
+      jobTitle: formData.jobTitle || "Professional Companion Seeker",
       incomePerMonthCorn: Math.floor(Math.random() * 20) + 5,
       hobbies: formData.hobbies,
-      diet: formData.diet || 'Balanced',
-      fatherOccupation: 'Family Head',
-      motherOccupation: 'Homemaker',
+      diet: formData.diet || "Balanced",
+      fatherOccupation: "Family Head",
+      motherOccupation: "Homemaker",
       siblings: Math.floor(Math.random() * 5) + 1,
-      familyType: 'Loving Family',
+      familyType: "Loving Family",
       compatibilityScore: Math.floor(Math.random() * 40) + 60,
-      lookingFor: formData.type === 'fox' ? 'Hen' : 'Fox',
-      status: 'Single'
+      lookingFor: formData.type === "fox" ? "Hen" : "Fox",
+      status: "Single",
     };
 
     setTimeout(() => {
       const success = onRegister(userData);
       if (success) {
-        navigate('/');
+        navigate("/");
       } else {
-        setError('Username already exists! Please choose a different one.');
+        setError("Username already exists! Please choose a different one.");
       }
       setIsLoading(false);
     }, 500);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-    // ✅ Add hobby options here
+  // ✅ Add hobby options here
   const hobbyOptions = [
     "Dancing",
     "Swimming",
@@ -104,11 +116,13 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
         <div className="floating-emoji">💕</div>
         <div className="floating-emoji">🌈</div>
       </div>
-      
+
       <div className="register-card">
         <div className="register-header">
-          <h1 className="register-title">🎉 Join X Match Finder</h1>
-          <p className="register-subtitle">Create your profile and find your perfect match!</p>
+          <h1 className="register-title">🎉 Join Kalyaanam App</h1>
+          <p className="register-subtitle">
+            Create your profile and find your perfect match!
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="register-form">
@@ -240,7 +254,9 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
                     checked={formData.hobbies.includes(hobby)}
                     onChange={(e) => {
                       const selectedHobby = e.target.value;
-                      const newHobbies = formData.hobbies.includes(selectedHobby)
+                      const newHobbies = formData.hobbies.includes(
+                        selectedHobby
+                      )
                         ? formData.hobbies.filter((h) => h !== selectedHobby)
                         : [...formData.hobbies, selectedHobby];
 
@@ -253,20 +269,24 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
             </div>
           </div>
 
-
           {error && <div className="error-message">❌ {error}</div>}
 
-          <button 
-            type="submit" 
-            className={`register-btn ${isLoading ? 'loading' : ''}`}
+          <button
+            type="submit"
+            className={`register-btn ${isLoading ? "loading" : ""}`}
             disabled={isLoading}
           >
-            {isLoading ? '🔄 Creating Account...' : '💕 Join the Fun!'}
+            {isLoading ? "🔄 Creating Account..." : "💕 Join the Fun!"}
           </button>
         </form>
 
         <div className="register-footer">
-          <p>Already have an account? <Link to="/" className="login-link">🔑 Login here</Link></p>
+          <p>
+            Already have an account?{" "}
+            <Link to="/" className="login-link">
+              🔑 Login here
+            </Link>
+          </p>
         </div>
       </div>
     </div>
