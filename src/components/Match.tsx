@@ -180,6 +180,27 @@ const Match: React.FC<MatchProps> = ({ user, users, onLogout }) => {
             </p>
           </div>
 
+                {/* INSERT MATCH STATS HERE */}
+        <div className="match-stats">
+          <div className="stat-item">
+            <span className="stat-number">{matches.length}</span>
+            <span className="stat-label">Compatible Matches Found</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">{user.hobbies.length}</span>
+            <span className="stat-label">Your Hobbies</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">
+              {matches.length > 0
+                ? Math.max(...matches.map((m) => m.compatibilityScore))
+                : 0}
+              %
+            </span>
+            <span className="stat-label">Highest Compatibility</span>
+          </div>
+        </div>
+
           {isLoading ? (
             <div className="loading-section">
               <div className="loading-spinner">🔄</div>
