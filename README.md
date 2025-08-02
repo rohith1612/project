@@ -68,10 +68,8 @@ Home Page
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Home_page.png?raw=true)
 Profile page
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Screenshot%202025-08-02%20090530.png?raw=true)
-Upload Page
-![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/upload_2.png?raw=true)
-Post Page
-![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/post.png?raw=true)
+Photo feed Page
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Screenshot%202025-08-02%20091409.png?raw=true)
 PickUp corner
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/pickup_corner.png?raw=true)
 Find your match
