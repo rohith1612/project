@@ -48,6 +48,8 @@ const Upload: React.FC<UploadProps> = ({
     "/src/assets/hen3.jpg",
     "/src/assets/hen4.jpeg",
     "/src/assets/hen5.jpg",
+    "/src/assets/hen6.avif",
+    "/src/assets/hen7.jpg",
   ];
 
   // Fun captions for random generation

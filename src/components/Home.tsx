@@ -55,18 +55,18 @@ const Home: React.FC<HomeProps> = ({ user, onLogout }) => {
             {[
               {
                 name: "Foxy & Rosie",
-                img: "/images/couple1.jpg",
+                img: "src/assets/couple1.png",
                 story:
                   "Met during the spring festival, now happily raising 3 chicks! 🐣",
               },
               {
                 name: "Cluckster & Bella",
-                img: "/images/couple2.jpg",
+                img: "src/assets/couple2.png",
                 story: "A monsoon romance that turned into lifelong love 🌧❤️",
               },
               {
                 name: "Amber & Rusty",
-                img: "/images/couple3.jpg",
+                img: "src/assets/couple3.png",
                 story: "Bonded over corn trading and evening walks 🌽✨",
               },
             ].map((t, i) => (
@@ -108,22 +108,22 @@ const Home: React.FC<HomeProps> = ({ user, onLogout }) => {
               },
               {
                 name: "Clucky Belle",
-                image: "/src/assets/fox1.jpg",
+                image: "/src/assets/fox2.jpeg",
                 note: "Rainy season cuddle 🐥",
               },
               {
                 name: "Scarlet Hen",
-                image: "/src/assets/fox1.jpg",
+                image: "/src/assets/fox3.jpeg",
                 note: "Loves evening walks 🌇",
               },
               {
                 name: "Amber Hen",
-                image: "/src/assets/fox1.jpg",
+                image: "/src/assets/fox4.jpeg",
                 note: "Perfect festival companion 🎉",
               },
               {
                 name: "Luna Hen",
-                image: "/src/assets/fox1.jpg",
+                image: "/src/assets/fox5.jpeg",
                 note: "Adventurous and charming ✨",
               },
             ].map((rec, index) => (
