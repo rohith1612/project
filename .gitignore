@@ -7,19 +7,51 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+.vite/
+
+# Local environment settings
+.env
 *.local
 
-# Editor directories and files
-.vscode/*
+# IDE/editor settings
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.env
+
+# System files
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Optional Vite cache
+.cache/
+
+# Optional logs and coverage reports
+coverage/
+*.lcov
+
+# Optional npm cache directory
+.npm/
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+*.iml
+out/
