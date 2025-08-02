@@ -12,7 +12,6 @@ import Home from "./components/Home";
 import Upload from "./components/Upload";
 import PickupCorner from "./components/PickupCorner";
 import Match from "./components/Match";
-import WeatherErrorPopup from "./components/WeatherErrorPopup";
 import usersData from "./data/users.json";
 import "./App.css";
 
@@ -54,76 +53,6 @@ interface UploadedImage {
   caption: string;
   timestamp: string;
 }
-
-interface WeatherData {
-  rainy: boolean;
-  sunny: boolean;
-}
-
-// Weather Guard Component
-const WeatherGuard: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [showWeatherError, setShowWeatherError] = useState(false);
-  const [weatherChecked, setWeatherChecked] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    loadWeatherData();
-  }, []);
-
-  const loadWeatherData = async () => {
-    try {
-      const response = await fetch("/data/weather.json");
-      const weatherData: WeatherData = await response.json();
-      setWeather(weatherData);
-      setWeatherChecked(true);
-
-      // Check if weather conditions are not met
-      if (!weatherData.rainy || !weatherData.sunny) {
-        setShowWeatherError(true);
-      }
-    } catch (error) {
-      console.error("Failed to load weather data:", error);
-      setWeatherChecked(true);
-      setShowWeatherError(true);
-    }
-  };
-
-  const handleWeatherErrorClose = () => {
-    setShowWeatherError(false);
-    navigate("/home"); // Redirect back to home when weather conditions aren't met
-  };
-
-  // If weather hasn't been checked yet, show loading
-  if (!weatherChecked) {
-    return (
-      <div className="weather-loading-screen">
-        <div className="weather-loading-content">
-          <div className="loading-weather-icon">🌤️</div>
-          <h2>Checking Weather Conditions...</h2>
-          <p>Ensuring perfect conditions for love to bloom!</p>
-          <div className="loading-dots">
-            <span>.</span>
-            <span>.</span>
-            <span>.</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // If weather conditions are not met, show error popup
-  if (showWeatherError) {
-    return (
-      <WeatherErrorPopup weather={weather} onClose={handleWeatherErrorClose} />
-    );
-  }
-
-  // If weather conditions are perfect, render the protected component
-  return <>{children}</>;
-};
 
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -243,9 +172,7 @@ function App() {
             path="/match"
             element={
               currentUser ? (
-                <WeatherGuard>
-                  <Match user={currentUser} users={users} onLogout={logout} />
-                </WeatherGuard>
+                <Match user={currentUser} users={users} onLogout={logout} />
               ) : (
                 <Navigate to="/" replace />
               )
