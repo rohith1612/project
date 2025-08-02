@@ -66,11 +66,16 @@ Registration page
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Registration_page.png?raw=true)
 Home Page
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Home_page.png?raw=true)
-Upload Page
-![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/upload_your_pics.png?raw=true)
+Post Page
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/post.png?raw=true)
 Upload Page two
 ![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/upload_2.png?raw=true)
-![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/Intro_and_Loginpage.png?raw=true)
+PickUp corner
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/pickup_corner.png?raw=true)
+Find your match
+![Screenshot](https://github.com/rohith1612/project/blob/main/screenshot/find_match.png?raw=true)
+
+
 
 
 
